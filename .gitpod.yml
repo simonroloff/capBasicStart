@@ -1,4 +1,3 @@
-
 tasks:
   - name: Install Dependencies
     init: |
@@ -18,6 +17,5 @@ ports:
 
 vscode:
   extensions:
-    - iljapostnovs.ui5plugin
     - alexcvzz.vscode-sqlite
-    - sapse.vscode-cds
+    - vscjava.vscode-java-pack
