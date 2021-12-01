@@ -19,3 +19,4 @@ vscode:
   extensions:
     - alexcvzz.vscode-sqlite
     - vscjava.vscode-java-pack
+    - gabrielbb.vscode-lombok
