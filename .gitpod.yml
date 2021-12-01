@@ -1,14 +1,23 @@
 
 tasks:
-  - init: echo 'init script' # runs during prebuild
-    command: echo 'start script'
+  - name: Install Dependencies
+    init: |
+      wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
+      echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+      sudo apt-get update
+      sudo apt-get install cf7-cli
+  - name: Spring Startup
+    init: mvn clean install
+    command: mvn spring-boot:run
 
 # List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
 ports:
   - port: 8080
-    onOpen: open-preview
+    visibility: public 
+    onOpen: open-browser
 
 vscode:
   extensions:
     - iljapostnovs.ui5plugin
     - alexcvzz.vscode-sqlite
+    - sapse.vscode-cds
